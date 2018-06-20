@@ -23,6 +23,35 @@ public class Figure {
         return false;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
+    public void setPosition(Point position) {
+        this.position = position;
+    }
+
+    public Type getType() {
+
+        return type;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public Point getPosition() {
+        return position;
+    }
+
     public enum Type {
         pawn,
         knight,
