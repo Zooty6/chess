@@ -96,17 +96,22 @@ public class Figure {
         }
     }
 
-    public boolean move(Point destination, boolean isHittingEnemy){
+    public boolean canMove(Point destination, boolean isHittingEnemy){
         if(isOutOfBoard(destination))
             return false;
 
-        if(moveChecker.isValid(position, destination, moves, isHittingEnemy)){
-           position.setLocation(destination);
-           moves++;
-           return true;
+        return moveChecker.isValid(position, destination, moves, isHittingEnemy);
+    }
+
+    public boolean move(Point destination, boolean isHittingEnemy){
+        if(canMove(destination, isHittingEnemy)){
+            moves++;
+            position.setLocation(destination);
+            return true;
         }
         return false;
     }
+
 
     public void setColor(Color color) {
         this.color = color;
