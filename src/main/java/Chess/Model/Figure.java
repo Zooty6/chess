@@ -2,6 +2,8 @@ package Chess.Model;
 
 import java.awt.*;
 
+import static Chess.Model.Board.isOutOfBoard;
+
 public class Figure {
     private Type type;
     private Color color;
@@ -14,11 +16,6 @@ public class Figure {
         boolean isValid(Point currentPosition, Point destination, int moves, boolean isHittingEnemy);
     }
 
-    private boolean isOutOfBoard(Point point){
-        return point.getX() > 8 || point.getY() > 8 ||
-                point.getX() < 1 || point.getY() < 1;
-    }
-
     public Figure(Type type, Color color, Point position) {
         this.type = type;
         this.color = color;
@@ -28,8 +25,8 @@ public class Figure {
         this.position = position;
         //setting how valid moves are calculated based on type
         switch (type) {
-            case pawn:
-                if(color == Color.white) {
+            case PAWN:
+                if(color == Color.WHITE) {
                     moveChecker = (currentPosition, destination, moves, isHittingEnemy) -> {
                         if (isHittingEnemy) {
                             return (destination.y - currentPosition.y == 1 &&
@@ -61,21 +58,25 @@ public class Figure {
                     };
                 }
                 break;
-            case knight:
-
+            case KNIGHT:
+                moveChecker = (currentPosition, destination, moves, isHittingEnemy) ->
+                        (Math.abs(currentPosition.getY() - destination.getY()) == 2 &&
+                        currentPosition.getX() - destination.getX() == 1) ||
+                        (Math.abs(currentPosition.getY() - destination.getY()) == 1 &&
+                        currentPosition.getX() - destination.getX() == 2);
                 break;
-            case bishop:
+            case BISHOP:
                 moveChecker = (currentPosition, destination, moves, isHittingEnemy) ->
                         ((currentPosition.getY() - currentPosition.getX() == destination.getY() - destination.getX() ||
                         currentPosition.getY() + currentPosition.getX() == destination.getY() + destination.getX()) &&
                         currentPosition.distance(destination) != 0);
                 break;
-            case rook:
+            case ROOK:
                 moveChecker = (currentPosition, destination, moves, isHittingEnemy) ->
                                 (currentPosition.getX() == destination.getX() ^
                                 currentPosition.getY() == destination.getY());
                 break;
-            case queen:
+            case QUEEN:
                 moveChecker = (currentPosition, destination, moves1, isHittingEnemy) ->
                                 currentPosition.distance(destination) != 0 &&
                                 (
@@ -87,7 +88,7 @@ public class Figure {
                                     currentPosition.getY() + currentPosition.getX() == destination.getY() + destination.getX())
                                 );
                 break;
-            case king:
+            case KING:
                 moveChecker = (currentPosition, destination, moves1, isHittingEnemy) ->
                                 currentPosition.distance(destination) != 0 &&
                                 Math.abs(currentPosition.y - destination.y) <= 1 &&
@@ -113,10 +114,6 @@ public class Figure {
     }
 
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
@@ -141,17 +138,17 @@ public class Figure {
         return position;
     }
     public enum Type {
-        pawn,
-        knight,
-        bishop,
-        rook,
-        queen,
-        king
+        PAWN,
+        KNIGHT,
+        BISHOP,
+        ROOK,
+        QUEEN,
+        KING
 
     }
     public enum Color {
-        white,
-        black
+        WHITE,
+        BLACK
 
     }
 }
