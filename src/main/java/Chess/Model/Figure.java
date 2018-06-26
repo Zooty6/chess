@@ -70,9 +70,9 @@ public class Figure {
             case KNIGHT:
                 moveChecker = (currentPosition, destination, moves, isHittingEnemy) ->
                         (Math.abs(currentPosition.getY() - destination.getY()) == 2 &&
-                        currentPosition.getX() - destination.getX() == 1) ||
+                        Math.abs(currentPosition.getX() - destination.getX() == 1)) ||
                         (Math.abs(currentPosition.getY() - destination.getY()) == 1 &&
-                        currentPosition.getX() - destination.getX() == 2);
+                        Math.abs(currentPosition.getX() - destination.getX() == 2));
                 break;
             case BISHOP:
                 moveChecker = (currentPosition, destination, moves, isHittingEnemy) ->
