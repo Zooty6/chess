@@ -1,0 +1,1 @@
+Chess pieces from: https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces#/media/File:Chess_Pieces_Sprite.svg
