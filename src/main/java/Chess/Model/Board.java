@@ -7,45 +7,45 @@ import java.util.Set;
 
 public class Board {
     private Set<Figure> figures = new HashSet<>();
-    private Figure.Color turn = Figure.Color.WHITE;
+    private Figure.FigureColor turn = Figure.FigureColor.WHITE;
     private State state = State.NORMAL;
 
     public Board() {
-        figures.add(new Figure(Figure.Type.ROOK, Figure.Color.BLACK, new Point(1, 8)));
-        figures.add(new Figure(Figure.Type.KNIGHT, Figure.Color.BLACK, new Point(2, 8)));
-        figures.add(new Figure(Figure.Type.BISHOP, Figure.Color.BLACK, new Point(3, 8)));
-        figures.add(new Figure(Figure.Type.QUEEN, Figure.Color.BLACK, new Point(4, 8)));
-        figures.add(new Figure(Figure.Type.KING, Figure.Color.BLACK, new Point(5, 8)));
-        figures.add(new Figure(Figure.Type.BISHOP, Figure.Color.BLACK, new Point(6, 8)));
-        figures.add(new Figure(Figure.Type.KNIGHT, Figure.Color.BLACK, new Point(7, 8)));
-        figures.add(new Figure(Figure.Type.ROOK, Figure.Color.BLACK, new Point(8, 8)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.BLACK, new Point(1, 7)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.BLACK, new Point(2, 7)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.BLACK, new Point(3, 7)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.BLACK, new Point(4, 7)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.BLACK, new Point(5, 7)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.BLACK, new Point(6, 7)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.BLACK, new Point(7, 7)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.BLACK, new Point(8, 7)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.WHITE, new Point(1, 2)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.WHITE, new Point(2, 2)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.WHITE, new Point(3, 2)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.WHITE, new Point(4, 2)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.WHITE, new Point(5, 2)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.WHITE, new Point(6, 2)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.WHITE, new Point(7, 2)));
-        figures.add(new Figure(Figure.Type.PAWN, Figure.Color.WHITE, new Point(8, 2)));
-        figures.add(new Figure(Figure.Type.ROOK, Figure.Color.WHITE, new Point(1, 1)));
-        figures.add(new Figure(Figure.Type.KNIGHT, Figure.Color.WHITE, new Point(2, 1)));
-        figures.add(new Figure(Figure.Type.BISHOP, Figure.Color.WHITE, new Point(3, 1)));
-        figures.add(new Figure(Figure.Type.QUEEN, Figure.Color.WHITE, new Point(4, 1)));
-        figures.add(new Figure(Figure.Type.KING, Figure.Color.WHITE, new Point(5, 1)));
-        figures.add(new Figure(Figure.Type.BISHOP, Figure.Color.WHITE, new Point(6, 1)));
-        figures.add(new Figure(Figure.Type.KNIGHT, Figure.Color.WHITE, new Point(7, 1)));
-        figures.add(new Figure(Figure.Type.ROOK, Figure.Color.WHITE, new Point(8, 1)));
+        figures.add(new Figure(Figure.FigureType.ROOK, Figure.FigureColor.BLACK, new Point(1, 8)));
+        figures.add(new Figure(Figure.FigureType.KNIGHT, Figure.FigureColor.BLACK, new Point(2, 8)));
+        figures.add(new Figure(Figure.FigureType.BISHOP, Figure.FigureColor.BLACK, new Point(3, 8)));
+        figures.add(new Figure(Figure.FigureType.QUEEN, Figure.FigureColor.BLACK, new Point(4, 8)));
+        figures.add(new Figure(Figure.FigureType.KING, Figure.FigureColor.BLACK, new Point(5, 8)));
+        figures.add(new Figure(Figure.FigureType.BISHOP, Figure.FigureColor.BLACK, new Point(6, 8)));
+        figures.add(new Figure(Figure.FigureType.KNIGHT, Figure.FigureColor.BLACK, new Point(7, 8)));
+        figures.add(new Figure(Figure.FigureType.ROOK, Figure.FigureColor.BLACK, new Point(8, 8)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.BLACK, new Point(1, 7)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.BLACK, new Point(2, 7)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.BLACK, new Point(3, 7)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.BLACK, new Point(4, 7)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.BLACK, new Point(5, 7)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.BLACK, new Point(6, 7)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.BLACK, new Point(7, 7)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.BLACK, new Point(8, 7)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.WHITE, new Point(1, 2)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.WHITE, new Point(2, 2)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.WHITE, new Point(3, 2)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.WHITE, new Point(4, 2)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.WHITE, new Point(5, 2)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.WHITE, new Point(6, 2)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.WHITE, new Point(7, 2)));
+        figures.add(new Figure(Figure.FigureType.PAWN, Figure.FigureColor.WHITE, new Point(8, 2)));
+        figures.add(new Figure(Figure.FigureType.ROOK, Figure.FigureColor.WHITE, new Point(1, 1)));
+        figures.add(new Figure(Figure.FigureType.KNIGHT, Figure.FigureColor.WHITE, new Point(2, 1)));
+        figures.add(new Figure(Figure.FigureType.BISHOP, Figure.FigureColor.WHITE, new Point(3, 1)));
+        figures.add(new Figure(Figure.FigureType.QUEEN, Figure.FigureColor.WHITE, new Point(4, 1)));
+        figures.add(new Figure(Figure.FigureType.KING, Figure.FigureColor.WHITE, new Point(5, 1)));
+        figures.add(new Figure(Figure.FigureType.BISHOP, Figure.FigureColor.WHITE, new Point(6, 1)));
+        figures.add(new Figure(Figure.FigureType.KNIGHT, Figure.FigureColor.WHITE, new Point(7, 1)));
+        figures.add(new Figure(Figure.FigureType.ROOK, Figure.FigureColor.WHITE, new Point(8, 1)));
     }
 
-    public Figure.Color getTurn() {
+    public Figure.FigureColor getTurn() {
         return turn;
     }
 
@@ -66,10 +66,10 @@ public class Board {
         return figure;
     }
 
-    public Set<Figure> getDeadFigures(Figure.Color color){
+    public Set<Figure> getDeadFigures(Figure.FigureColor figureColor){
         Set<Figure> deadFigures = new HashSet<>();
         figures.forEach(figure -> {
-            if(figure.getColor() == color && !figure.isAlive())
+            if(figure.getFigureColor() == figureColor && !figure.isAlive())
                 deadFigures.add(figure);
         });
         return deadFigures;
@@ -80,8 +80,10 @@ public class Board {
             Figure figureAtDest = getAliveFigure(to);
             if(figureAtDest != null)
                 figureAtDest.setAlive(false);
-            getAliveFigure(from).setPosition(to);
-            turn = turn == Figure.Color.WHITE ? Figure.Color.BLACK : Figure.Color.WHITE;
+            Figure fromFigure = getAliveFigure(from);
+            fromFigure.setPosition(to);
+            fromFigure.incMoves();
+            turn = turn == Figure.FigureColor.WHITE ? Figure.FigureColor.BLACK : Figure.FigureColor.WHITE;
             renewState();
             return true;
         }
@@ -97,6 +99,9 @@ public class Board {
             return false;
         }
 
+        if(fromFigure.getFigureColor() != turn)
+            return false;
+
         ArrayList<Point> pointsOnTheWay = getPointsOnTheWay(from, to);
         for (Point point : pointsOnTheWay) {
             if (getAliveFigure(point) != null) {
@@ -107,13 +112,15 @@ public class Board {
         Figure toFigure = getAliveFigure(to);
         boolean isHittingEnemy = false;
         if(toFigure != null){
-            if (fromFigure.getColor() == toFigure.getColor()) {
+            if (fromFigure.getFigureColor() == toFigure.getFigureColor()) {
                 return false;
             }else{
                 isHittingEnemy = true;
             }
         }
+        return fromFigure.canMove(to, isHittingEnemy);
 
+        /*
         if (fromFigure.canMove(to, isHittingEnemy)) {
             Set<Figure> figuresToCalculate = new HashSet<>(figures);
             for (Figure figure : figuresToCalculate) {
@@ -132,14 +139,15 @@ public class Board {
             }
             return !(calculateState(figuresToCalculate, turn) == State.CHECK);
         }
-        return false;
+
+        return false;*/
     }
 
     private void renewState() {
         state = calculateState(figures, turn);
     }
 
-    private State calculateState(Set<Figure> figuresToCalculate, Figure.Color side) {
+    private State calculateState(Set<Figure> figuresToCalculate, Figure.FigureColor side) {
         //TODO
         return State.NORMAL;
     }

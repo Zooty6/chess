@@ -1,32 +1,41 @@
 package Chess.Model;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.io.File;
+import java.io.IOException;
 
 import static Chess.Model.Board.isOutOfBoard;
 
 public class Figure {
-    private Type type;
-    private Color color;
+    private FigureType figureType;
+    private FigureColor figureColor;
     private boolean alive = true;
     private Point position;
     private IMoveChecker moveChecker;
     private int moves = 0;
+    private Image image;
+
+    public void incMoves() {
+        moves++;
+    }
 
     private interface IMoveChecker{
         boolean isValid(Point currentPosition, Point destination, int moves, boolean isHittingEnemy);
     }
 
-    public Figure(Type type, Color color, Point position) {
-        this.type = type;
-        this.color = color;
+    public Figure(FigureType figureType, FigureColor figureColor, Point position) {
+        this.figureType = figureType;
+        this.figureColor = figureColor;
         if(isOutOfBoard(position)){
             throw new IndexOutOfBoundsException("Position is out of the board.");
         }
         this.position = position;
         //setting how valid moves are calculated based on type
-        switch (type) {
+        switch (figureType) {
             case PAWN:
-                if(color == Color.WHITE) {
+                if(figureColor == FigureColor.WHITE) {
                     moveChecker = (currentPosition, destination, moves, isHittingEnemy) -> {
                         if (isHittingEnemy) {
                             return (destination.y - currentPosition.y == 1 &&
@@ -95,6 +104,14 @@ public class Figure {
                                 Math.abs(currentPosition.x - destination.x) <= 1;
                 break;
         }
+
+        File imageFile = new File("resources/figures/" + (figureColor.toString().substring(0, 1)) + figureType + ".png"); // haaaaaaack
+        try {
+            image = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            System.out.println(String.format("Couldn't read file: %s", imageFile));
+            e.printStackTrace();
+        }
     }
 
     public boolean canMove(Point destination, boolean isHittingEnemy){
@@ -113,6 +130,9 @@ public class Figure {
         return false;
     }
 
+    public Image getImage() {
+        return image;
+    }
 
     public void setAlive(boolean alive) {
         this.alive = alive;
@@ -122,12 +142,12 @@ public class Figure {
         this.position = position;
     }
 
-    public Type getType() {
-        return type;
+    public FigureType getFigureType() {
+        return figureType;
     }
 
-    public Color getColor() {
-        return color;
+    public FigureColor getFigureColor() {
+        return figureColor;
     }
 
     public boolean isAlive() {
@@ -137,7 +157,7 @@ public class Figure {
     public Point getPosition() {
         return position;
     }
-    public enum Type {
+    public enum FigureType {
         PAWN,
         KNIGHT,
         BISHOP,
@@ -146,9 +166,8 @@ public class Figure {
         KING
 
     }
-    public enum Color {
+    public enum FigureColor {
         WHITE,
         BLACK
-
     }
 }
