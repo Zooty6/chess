@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Board {
     private Set<Figure> figures = new HashSet<>();
-    private Turn turn = Turn.WHITES_TURN;
+    private Figure.Color turn = Figure.Color.WHITE;
     private State state = State.NORMAL;
 
     public Board() {
@@ -45,7 +45,7 @@ public class Board {
         figures.add(new Figure(Figure.Type.ROOK, Figure.Color.WHITE, new Point(8, 1)));
     }
 
-    public Turn getTurn() {
+    public Figure.Color getTurn() {
         return turn;
     }
 
@@ -81,7 +81,7 @@ public class Board {
             if(figureAtDest != null)
                 figureAtDest.setAlive(false);
             getAliveFigure(from).setPosition(to);
-            turn = turn == Turn.WHITES_TURN ? Turn.BLACKS_TURN : Turn.WHITES_TURN;
+            turn = turn == Figure.Color.WHITE ? Figure.Color.BLACK : Figure.Color.WHITE;
             renewState();
             return true;
         }
@@ -139,7 +139,7 @@ public class Board {
         state = calculateState(figures, turn);
     }
 
-    private State calculateState(Set<Figure> figuresToCalculate, Turn side) {
+    private State calculateState(Set<Figure> figuresToCalculate, Figure.Color side) {
         //TODO
         return State.NORMAL;
     }
@@ -215,12 +215,4 @@ public class Board {
         CHECKMATE,
         DRAW
     }
-
-    public enum Turn{
-        WHITES_TURN,
-        BLACKS_TURN
-    }
-
-
-
 }
