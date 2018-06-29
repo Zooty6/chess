@@ -5,6 +5,7 @@ import Chess.Model.Board;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class Window extends JFrame {
 
     private Board board;

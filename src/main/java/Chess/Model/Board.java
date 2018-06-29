@@ -54,8 +54,12 @@ public class Board {
     }
 
     public Figure getAliveFigure(Point point){
+        return getAliveFigure(point, figures);
+    }
+
+    public Figure getAliveFigure(Point point, Set<Figure> figuresPool){
         Figure figure = null;
-        for (Figure fig : figures) {
+        for (Figure fig : figuresPool) {
             if (fig.isAlive()
                     && fig.getPosition().getX() == point.getX()
                     && fig.getPosition().getY() == point.getY()) {
@@ -91,6 +95,10 @@ public class Board {
     }
 
     private boolean canMove(Point from, Point to){
+        return canMove(from, to, false, figures);
+    }
+
+    private boolean canMove(Point from, Point to, boolean chessCheck, Set<Figure> figuresToCalculateWith){
         if(isOutOfBoard(from) || isOutOfBoard(to))
             return false;
 
@@ -99,12 +107,12 @@ public class Board {
             return false;
         }
 
-        if(fromFigure.getFigureColor() != turn)
+        if(fromFigure.getFigureColor() != turn && !chessCheck)
             return false;
 
         ArrayList<Point> pointsOnTheWay = getPointsOnTheWay(from, to);
         for (Point point : pointsOnTheWay) {
-            if (getAliveFigure(point) != null) {
+            if (getAliveFigure(point, figuresToCalculateWith) != null) {
                 return false;
             }
         }
@@ -118,11 +126,15 @@ public class Board {
                 isHittingEnemy = true;
             }
         }
-        return fromFigure.canMove(to, isHittingEnemy);
 
-        /*
-        if (fromFigure.canMove(to, isHittingEnemy)) {
-            Set<Figure> figuresToCalculate = new HashSet<>(figures);
+        boolean allowedMove = fromFigure.canMove(to, isHittingEnemy);
+
+        if (allowedMove && !chessCheck) {
+            Set<Figure> figuresToCalculate = new HashSet<>();
+            for (Figure figure : this.figures) {
+                figuresToCalculate.add(figure.copy());
+            }
+
             for (Figure figure : figuresToCalculate) {
                 if(figure.getPosition().getX() == to.getX() && figure.getPosition().getY() == to.getY()
                         && figure.isAlive()) {
@@ -140,14 +152,32 @@ public class Board {
             return !(calculateState(figuresToCalculate, turn) == State.CHECK);
         }
 
-        return false;*/
+        return allowedMove;
     }
 
     private void renewState() {
-        state = calculateState(figures, turn);
+        //state = calculateState(figures, turn);
     }
 
     private State calculateState(Set<Figure> figuresToCalculate, Figure.FigureColor side) {
+        Figure king = null;
+        for (Figure figure : figuresToCalculate) {
+            if(figure.getFigureType() == Figure.FigureType.KING && figure.getFigureColor() == side){
+                king = figure;
+                break;
+            }
+        }
+        boolean canHitKing = false;
+        for (Figure figure : figuresToCalculate) {
+            if(figure.getFigureColor() != side && figure.isAlive() &&
+                canMove(figure.getPosition(), king.getPosition(), true, figuresToCalculate)){
+                canHitKing = true;
+                break;
+            }
+        }
+        if(canHitKing)
+            return State.CHECK;
+
         //TODO
         return State.NORMAL;
     }

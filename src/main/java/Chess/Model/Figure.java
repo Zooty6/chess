@@ -114,6 +114,14 @@ public class Figure {
         }
     }
 
+    public Figure copy() {
+        Figure figure = new Figure(figureType, figureColor, new Point(position));
+        figure.alive = this.alive;
+        figure.moves = this.moves;
+        figure.image = this.image;
+        return figure;
+    }
+
     public boolean canMove(Point destination, boolean isHittingEnemy){
         if(isOutOfBoard(destination))
             return false;
@@ -157,6 +165,7 @@ public class Figure {
     public Point getPosition() {
         return position;
     }
+
     public enum FigureType {
         PAWN,
         KNIGHT,
@@ -164,7 +173,6 @@ public class Figure {
         ROOK,
         QUEEN,
         KING
-
     }
     public enum FigureColor {
         WHITE,

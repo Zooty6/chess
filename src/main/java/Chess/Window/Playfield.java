@@ -31,7 +31,7 @@ public class Playfield extends JPanel implements ActionListener {
                 playfield[y][x].addActionListener(this);
 
                 Point p = ConvertToBoardCoordinate(x, y);
-                playfield[y][x].setText(p.x + "/" + p.y);
+                //playfield[y][x].setText(p.x + "/" + p.y);
 
                 restoreBackgroundColor(x, y);
 
@@ -61,7 +61,7 @@ public class Playfield extends JPanel implements ActionListener {
                     Point clickedCoordinates = ConvertToBoardCoordinate(x, y);
                     Figure clicked = window.getBoard().getAliveFigure(clickedCoordinates);
 
-                    System.out.println(clickedCoordinates);
+                    //System.out.println(clickedCoordinates);
 
                     if ((clicked == null || clicked.getFigureColor() != window.getBoard().getTurn()) && selected != null) { // we wanna move there
                         Point tmpPoint = new Point(selected.getPosition());
