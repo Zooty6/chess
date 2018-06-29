@@ -167,6 +167,8 @@ public class Board {
                 break;
             }
         }
+        if(king == null)
+            throw new NullPointerException();
         boolean canHitKing = false;
         for (Figure figure : figuresToCalculate) {
             if(figure.getFigureColor() != side && figure.isAlive() &&
