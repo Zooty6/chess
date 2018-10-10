@@ -20,7 +20,8 @@ public abstract class Figure {
         moves++;
     }
 
-    public Figure(FigureColor figureColor, Point position) {
+    public Figure(FigureColor figureColor, Point position, FigureType figureType) {
+        this.figureType = figureType;
         this.figureColor = figureColor;
         if(isOutOfBoard(position)){
             throw new IndexOutOfBoundsException("Position is out of the board.");

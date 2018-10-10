@@ -12,7 +12,7 @@ public class Board {
 
     public Board() {
         figures.add(new Rook(Figure.FigureColor.BLACK, new Point(1, 8)));
-        figures.add(new King(Figure.FigureColor.BLACK, new Point(2, 8)));
+        figures.add(new Knight(Figure.FigureColor.BLACK, new Point(2, 8)));
         figures.add(new Bishop(Figure.FigureColor.BLACK, new Point(3, 8)));
         figures.add(new Queen(Figure.FigureColor.BLACK, new Point(4, 8)));
         figures.add(new King(Figure.FigureColor.BLACK, new Point(5, 8)));

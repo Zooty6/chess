@@ -6,7 +6,7 @@ import static Chess.Model.Board.isOutOfBoard;
 
 public class Knight extends Figure {
     public Knight(FigureColor figureColor, Point position) {
-        super(figureColor, position);
+        super(figureColor, position, FigureType.KNIGHT);
     }
 
     @Override

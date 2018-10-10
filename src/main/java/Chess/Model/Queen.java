@@ -6,7 +6,7 @@ import static Chess.Model.Board.isOutOfBoard;
 
 public class Queen extends Figure {
     public Queen(FigureColor figureColor, Point position) {
-        super(figureColor, position);
+        super(figureColor, position, FigureType.QUEEN);
     }
 
     @Override

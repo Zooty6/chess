@@ -6,7 +6,7 @@ import static Chess.Model.Board.isOutOfBoard;
 
 public class Pawn extends Figure {
     public Pawn(FigureColor figureColor, Point position) {
-        super(figureColor, position);
+        super(figureColor, position, FigureType.PAWN);
         this.figureType = FigureType.PAWN;
     }
 

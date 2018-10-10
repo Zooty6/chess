@@ -6,7 +6,7 @@ import static Chess.Model.Board.isOutOfBoard;
 
 public class Rook extends Figure{
     public Rook(FigureColor figureColor, Point position) {
-        super(figureColor, position);
+        super(figureColor, position, FigureType.ROOK);
     }
 
     @Override

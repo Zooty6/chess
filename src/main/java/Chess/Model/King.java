@@ -6,12 +6,12 @@ import static Chess.Model.Board.isOutOfBoard;
 
 public class King extends Figure {
     public King(FigureColor figureColor, Point position) {
-        super(figureColor, position);
+        super(figureColor, position, FigureType.KING);
     }
 
     @Override
     public Figure copy() {
-        Figure figure = new Rook(figureColor, new Point(position));
+        Figure figure = new King(figureColor, new Point(position));
         figure.alive = this.alive;
         figure.moves = this.moves;
         figure.image = this.image;

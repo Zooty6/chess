@@ -6,7 +6,7 @@ import static Chess.Model.Board.isOutOfBoard;
 
 public class Bishop extends Figure {
     public Bishop(FigureColor figureColor, Point position) {
-        super(figureColor, position);
+        super(figureColor, position, FigureType.BISHOP);
     }
 
     @Override
